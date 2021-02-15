@@ -31,7 +31,7 @@ LDFLAGS  +=`pkg-config --libs $(PKGS)`
 #LDFLAGS += -lgdk_imlib
 CPPFLAGS += -std=c++14 
 
-APP_NAME = riscv-console-sim
+APP_NAME = Simulator_xiaoli
 
 APP_OBJS = $(OBJ_DIR)/main.o                    \
     $(OBJ_DIR)/GraphicFactoryCairo.o            \

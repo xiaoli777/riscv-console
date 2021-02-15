@@ -39,8 +39,16 @@ SECTIONS
         /*KEEP(*(.vector_table))  /* vector table defined in startup.c to be included */
         *(.init*)               /* entry point needs to be a base */
         *(.text*)               /* other code */
-        *(.rodata*)             /* constants go here */
         _etext = .;             /* end of .text segment */
+    } > FLASH
+
+    .rodata :
+    {
+        _rodata = .;
+        *(.rodata*)             /* constants go here */
+        *(.srodata*)            /* constants go here */
+        . = ALIGN(4);
+        _erodata = .;
     } > FLASH
 
     /* data, initialized variables, to be copied to RAM after reset */
@@ -48,6 +56,7 @@ SECTIONS
     {
         _data = .;          /* beginning of .data segment */
         *(.data*)           /* data goes here */
+        . = ALIGN(4);
         _edata = .;         /* end of .data segment */
     } > RAM AT >FLASH       /* .data segment starts directly after the .text section in FLASH */
 
@@ -56,6 +65,7 @@ SECTIONS
     {
         _sdata = .;         /* beginning of .sdata segment */
         *(.sdata*)          /* data goes here */
+        . = ALIGN(4);
         _esdata = .;        /* end of .data segment */
     } > RAM AT >FLASH       /* .sdata segment starts directly after the .text section in FLASH */
 
@@ -64,6 +74,7 @@ SECTIONS
     {
         _bss = .;           /* beginning of .bss segment */
         *(.bss*)            /* .bss content goes here */
+        *(.sbss*)           /* .sbss content goes here */
         *(COMMON)       
         . = ALIGN(. != 0 ? 32 / 8 : 1);
         _ebss = .;          /* end of .bss segment */

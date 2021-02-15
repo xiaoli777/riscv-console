@@ -22,7 +22,7 @@ CRISCVConsoleApplicationConfiguration::CRISCVConsoleApplicationConfiguration(){
     DParameterNames["CPU_FREQ"] = EParameter::CPUFrequency;   
 
     DParameters[EParameter::UpKey] = "w";
-    DParameters[EParameter::DownKey] = "x";
+    DParameters[EParameter::DownKey] = "s";
     DParameters[EParameter::LeftKey] = "a";
     DParameters[EParameter::RightKey] = "d";
 

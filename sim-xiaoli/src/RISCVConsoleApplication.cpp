@@ -431,6 +431,9 @@ void CRISCVConsoleApplication::CreateConsoleWidgets(){
     DConsoleVideo = CGUIFactory::NewDrawingArea();
     CreateControllerWidgets();
     CreateSystemControlWidgets();
+    CreateDebugWidgets();
+    CreateDebugRegisterWidgets();
+    CreateDebugControlWidgets();
 
     DControlsBox = CGUIFactory::NewBox(CGUIBox::EOrientation::Horizontal,GetWidgetSpacing());
     DControlsBox->PackStart(DControllerGrid,false,false,GetWidgetSpacing());
@@ -466,12 +469,12 @@ void CRISCVConsoleApplication::CreateControllerWidgets(){
     DControllerGrid->Attach(DUpButton,1,0,1,1);
     DControllerGrid->Attach(DLeftButton,0,1,1,1);
     DControllerGrid->Attach(DRightButton,2,1,1,1);
-    DControllerGrid->Attach(DDownButton,1,2,1,1);
+    DControllerGrid->Attach(DDownButton,1,1,1,1);
     DControllerGrid->Attach(DCommandButton,3,1,1,1);
     DControllerGrid->Attach(DButton1,4,0,1,1);
     DControllerGrid->Attach(DButton2,6,0,1,1);
-    DControllerGrid->Attach(DButton3,4,2,1,1);
-    DControllerGrid->Attach(DButton4,6,2,1,1);
+    DControllerGrid->Attach(DButton3,4,1,1,1);
+    DControllerGrid->Attach(DButton4,6,1,1,1);
     DControllerGrid->SetRowSpacing(GetWidgetSpacing());
     DControllerGrid->SetColumnSpacing(GetWidgetSpacing());
 
@@ -528,27 +531,27 @@ void CRISCVConsoleApplication::CreateSystemControlWidgets(){
     DCartridgeButton = CGUIFactory::NewButton();
     DEjectButton = CGUIFactory::NewButton();
     DSystemControlGrid = CGUIFactory::NewGrid();
-    DSystemControlGrid->Attach(DCartridgeButton,0,0,1,1);
-    DSystemControlGrid->Attach(DEjectButton,1,0,1,1);
-    DSystemControlGrid->Attach(DResetButton,0,1,1,1);
-    DSystemControlGrid->Attach(DPowerButton,1,1,1,1);
-    DSystemControlGrid->Attach(DFirmwareButton,0,2,2,1);
+    DSystemControlGrid->Attach(DCartridgeButton,0,0,2,1);
+    DSystemControlGrid->Attach(DEjectButton,0,1,1,1);
+    DSystemControlGrid->Attach(DResetButton,1,1,1,1);
+    DSystemControlGrid->Attach(DPowerButton,0,2,2,1);
+    DSystemControlGrid->Attach(DFirmwareButton,0,3,2,1);
     DSystemControlGrid->SetRowSpacing(GetWidgetSpacing());
     DSystemControlGrid->SetColumnSpacing(GetWidgetSpacing());
 
-    DPowerButton->SetLabel("PWR");
+    DPowerButton->SetLabel("PowerOn");
     DPowerButton->SetToggledEventCallback(this, PowerButtonToggledEventCallback);
 
-    DResetButton->SetLabel("RST");
+    DResetButton->SetLabel("Reset");
     DResetButton->SetButtonPressEventCallback(this,ResetButtonClickEventCallback);
 
     DFirmwareButton->SetLabel("Firmware");
     DFirmwareButton->SetButtonPressEventCallback(this,FirmwareButtonClickEventCallback);
 
-    DCartridgeButton->SetLabel("INS");
+    DCartridgeButton->SetLabel("Cartridge");
     DCartridgeButton->SetButtonPressEventCallback(this,CartridgeButtonClickEventCallback);
 
-    DEjectButton->SetLabel("REM");
+    DEjectButton->SetLabel("Eject");
     DEjectButton->SetButtonPressEventCallback(this,EjectButtonClickEventCallback);
 }
 
