@@ -15,7 +15,7 @@ My demo is comprised of 3 components:
 
 I do **NOT** know if I can reuse the professor's code. So, I just modified the simulator based on his code, which helped me understand how to design a simulator quickly.
 
-![](img\simulator.png)
+![](img/simulator.png)
 
 In this simulator, I set the button to w, a, s, d and u, i, j, k. Moreover, I have implemented the corresponding function for these buttons. Additionally, to make convenient for debugging, I also added debug mode on the right side.
 
@@ -23,7 +23,7 @@ In this simulator, I set the button to w, a, s, d and u, i, j, k. Moreover, I ha
 
 ### fw_xiaoli
 
-![](img\firework.png)
+![](img/firework.png)
 
 After loading the fireware and pressing the PowerOn button, We can see a triangle on the screen. Now, we can use buttons: If we press the w, a, s and d, the cursor will move and leave the corresponding direction, like ^, <, > and v;  If we press the u, i, j and k, the cursor will print the corresponding letter. Also. we can see the debug mode will change after pressing the buttons.
 
